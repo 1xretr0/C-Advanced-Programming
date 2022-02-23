@@ -45,6 +45,24 @@ int main(){
         PR(s, "verdadero");
     else
         PR(s, "falso");
+    NL;
+    a = 1;
+    if (a)
+        PR(s, "Verdadero");
+    else
+        PR(s, "falso");
+    NL;
+
+    a = 0;
+    PRINT1(d, a);
+    PRINT1(d, !a);
+    PRINT1(d, !!a);
+
+    // operadores mas unarion (+) y menos unario
+    a = -3;
+    b = +3;
+    PRINT2(d, a, b);
+    PRINT2(+d, a, b);
 
     system("pause");
 }
