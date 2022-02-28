@@ -113,16 +113,49 @@ int main()
     PRINT1(d, d);
     //PRINT4(d, a, b, c, d);
 
-    // Operador "Tamaño de..." ( sizeof )
-    printf("El tamaño de del tipo char es %d bytes.\n", sizeof(char));
-    printf("El tamaño de del tipo int es %d bytes.\n", sizeof(int));
-    printf("El tamaño de del tipo float es %d bytes.\n", sizeof(float));
-    printf("El tamaño de del tipo double es %d bytes.\n", sizeof(double));
-    printf("El tamaño de del arreglo es %d bytes.\n", sizeof(arreglo));
-    printf("El tamaño de del arreglo[5] es %d bytes.\n", sizeof(arreglo[5]));
-    printf("El tamaño de la struct Persona es %d bytes.\n", sizeof(struct Persona));
-    printf("El tamaño de la variable Juanito es %d bytes.\n", sizeof(juanito));
-    printf("El tamaño de del apuntador ptrJuanito es %d bytes.\n", sizeof(ptrJuanito));
+    // Operador "tamano de..." ( sizeof )
+    printf("El tamano de del tipo char es %d bytes.\n", sizeof(char));
+    printf("El tamano de del tipo int es %d bytes.\n", sizeof(int));
+    printf("El tamano de del tipo float es %d bytes.\n", sizeof(float));
+    printf("El tamano de del tipo double es %d bytes.\n", sizeof(double));
+    printf("El tamano de del arreglo es %d bytes.\n", sizeof(arreglo));
+    printf("El tamano de del arreglo[5] es %d bytes.\n", sizeof(arreglo[5]));
+    printf("El tamano de la struct Persona es %d bytes.\n", sizeof(struct Persona));
+    printf("El tamano de la variable Juanito es %d bytes.\n", sizeof(juanito));
+    printf("El tamano de del apuntador ptrJuanito es %d bytes.\n", sizeof(ptrJuanito));
 
-    system("pause");
+    // operador direccion &
+    a = 50;
+    ptr = &a;
+    PRINT1(p, &a);
+    PRINT1(p, ptr);
+
+    juanito.edad = 25;
+    ptrJuanito = &juanito;
+    PRINT1(p, &juanito);
+    PRINT1(p, ptrJuanito);
+
+    // operador indireccion *
+    PRINT1(d, *ptr);
+    PRINT1(d, juanito.edad);
+    PRINT1(d, ptrJuanito->edad);
+
+    // operador cast (convertir)
+    // promocion tipos char -> int -> float -> double
+    car = 'H';
+    a = car;
+    e = a;
+    h = e;
+
+    // degradacion de tipos double -> float -> int -> char
+    h = 3.1416;
+    e = h;
+    a = e;
+    car = a;
+
+    // casting conversión de tipos
+    car = 'h';
+    a = (int) car;
+
+    // system("pause");
 }
