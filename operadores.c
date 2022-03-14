@@ -308,7 +308,7 @@ void asignacion()
     b = a * 10;
 
     a = b = c = d = 20; // Asignación múltiple
-    //PRINT4(d, a, b, c, d);
+    PRINT4(d, a, b, c, d);
 
     // Asignación Compuesta ( _= )
     a = 10;
@@ -342,26 +342,95 @@ void coma()
 }
 int main()
 {
-    /* a = 3; b = 3; c = 0; d = -1; e = 3.0; f = 2.0;
+    //  Ejercicios:
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
 
-    PRINT1(d, a*=2*a*++b);
-    PRINT4(d, a, b, c, d); PRINT2(f, e, f);
-
-    PRINT1(d, b=++b+b++);
+    PRINT1(d, a *= 2 * a * ++b);
     PRINT4(d, a, b, c, d);
     PRINT2(f, e, f);
 
-    a = 3; b = 3; c = 0; d = -1; e = 3.0; f = 2.0;
-    PRINT1(d, e /= d + d++);
+    PRINT1(d, b = ++b + b++);
     PRINT4(d, a, b, c, d);
     PRINT2(f, e, f);
 
-    PRINT1(d, (d = d ? d-- : d++));
-    PRINT4(d, a, b, c, d);
-    PRINT2(f, e, f); */
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
 
-    a = 3; b = 3; c = 0; d = -1; e = 3.0; f = 2.0;
+    PRINT1(f, e /= d + d++);
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    PRINT1(d, d = d ? d-- : d++);
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
+
     PRINT1(d, !a + !b + (d && c));
     PRINT4(d, a, b, c, d);
     PRINT2(f, e, f);
+
+    PRINT1(d, d = (a || b) && !(c || (d && !f)));
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
+
+    PRINT1(d, a % b * c - d++);
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    a = 3;
+    b = 3;
+    c = 3;
+    d = -1;
+    e = 3;
+    f = 2;
+
+    PRINT1(d, a >>= b-- && c << a);
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
+
+    PRINT1(d, a &= b-- && (c <<= a & d));
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    a = 3;
+    b = 3;
+    c = 0;
+    d = -1;
+    e = 3;
+    f = 2;
+
+    PRINT1(d, a = b <<= sizeof(int) / b);
+    PRINT4(d, a, b, c, d);
+    PRINT2(f, e, f);
+
+    system("pause");
 }
