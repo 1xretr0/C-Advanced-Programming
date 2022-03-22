@@ -3,12 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    int costo;  // variable de tipo entero
-    int *pointer; // pointer a variable de tipo entero
-    int arreglo[5];
+void porValor(int variable){
+    variable += 5;
+    printf("Variable = %d\n", variable);
+}
 
-    costo = 60;
+void porReferencia(int *variable){
+    *variable += 5;
+    printf("Variable = %d\n", *variable);
+}
+
+int main(){
+    int costo = 60;  // variable de tipo entero
+    int *pointer; // pointer a variable de tipo entero
+    int arreglo[5] = {1,2,3,4,5};
+    int *ptrArreglo[5];
+
+    /*costo = 60;
     printf("la direccion de memoria de costo es %p y hay %i\n", &costo, costo);
 
     pointer = &costo;
@@ -28,6 +39,17 @@ int main(){
     printf("la direccion del arreglo[3] es %p\n", &arreglo[3]);
     printf("la direccion del arreglo[4] es %p\n", &arreglo[4]);
 
+    pointer = &arreglo[2];
+    printf("la direccion de memoria del pointer es %p y hay %d\n", pointer, *pointer);
+
+    ptrArreglo[2] = &arreglo[2];
+    printf("la direccion de memoria del ptrArreglo es %p y hay %d\n", ptrArreglo[2], *ptrArreglo[2]);*/
+
+    porValor(costo);
+    printf("Costo = %d\n", costo);
+
+    porReferencia(&costo);
+    printf("Costo = %d\n", costo);
     // system("pause");
     return 0;
 }
