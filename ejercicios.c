@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 void removeSpaces(char *str);
 
@@ -74,7 +75,7 @@ int main()
 
     while (*pointer != '\0')
     {
-        if (*pointer == *pointer2)
+        if (tolower(*pointer) == tolower(*pointer2))
         {
             flag = 1;
         }
