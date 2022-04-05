@@ -6,16 +6,20 @@ int main(){
     // int a, b, c;
     int *pa, *pb, *pc;
 
-    pa = (int) malloc(sizeof(int));
-    pb = (int) malloc(sizeof(int));
-    pc = (int) malloc(sizeof(int));
+    pa = (int *) malloc(sizeof(int));
+    pb = (int *) malloc(sizeof(int));
+    pc = (int *) malloc(sizeof(int));
 
-    printf("Dama un número: ");
+    printf("Dame un numero: ");
     scanf("%d", pa);
-    printf("Dame un número: ");
+    printf("Dame un numero: ");
     scanf("%d", pb);
 
     *pc = *pa + *pb;
-    printf("la suma de %d mas %d es igual a: %d", *pa, *pb, *pc);
+    printf("la suma de %d + %d es igual a: %d\n", *pa, *pb, *pc);
+
+    free(pa);
+    free(pb);
+    free(pc);
     return 0;
 }
