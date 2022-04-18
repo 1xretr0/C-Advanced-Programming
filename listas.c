@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-void insert();
-
 struct Nodo{
     char info;
     struct Nodo *sig;
@@ -12,12 +10,12 @@ typedef struct Nodo nodo;
 
 nodo *raiz = NULL;  // lista vacia
 
-int main(){
-    int costo;
-    nodo cajaZapato;
+// int main(){
+//     int costo;
+//     nodo cajaZapato;
 
-    return 0;
-}
+//     return 0;
+// }
 
 void insert(char dato){
     nodo *nuevo = NULL;
@@ -34,5 +32,27 @@ void insert(char dato){
     }
     else{
         // no
+        nodo *recorre = raiz;
+        while (recorre->sig != NULL)
+            recorre = recorre->sig;
+        recorre->sig = nuevo;
     }
+}
+
+void imprimeLista(){
+    nodo *recorre = raiz;
+    while (recorre->sig != NULL){
+        printf("%c, ", recorre->sig);
+        recorre = recorre->sig;
+    }
+    printf("\n");
+}
+
+int main(){
+    insert('S');
+    insert('E');
+    insert('B');
+    insert('A');
+    insert('S');
+    imprimeLista();
 }
