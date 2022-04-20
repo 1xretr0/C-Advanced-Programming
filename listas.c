@@ -50,16 +50,6 @@ void insert1(char dato){
 // inserta en la posicion n
 void insertN(char dato, int n)
 {
-    // contar elementos
-    int cont = 0;
-    nodo *recorre = raiz;
-    while (recorre != NULL)
-    {
-        cont++;
-        recorre = recorre->sig;
-    }
-    printf("Elementos: %i\n", cont);
-
     nodo *nuevo = NULL;
     nuevo = (nodo *)malloc(sizeof(nodo));
     if (nuevo == NULL){
@@ -73,25 +63,19 @@ void insertN(char dato, int n)
     { // lista vacia
         raiz = nuevo;
     }
-    else if (n > cont)
-    { // lista no vacia. posicion a insertar mayor a cont
-        nodo *recorre = raiz;
-        while (recorre->sig != NULL)
-            recorre = recorre->sig;
-        recorre->sig = nuevo;
-    }
-    else if (n <= cont){
-        // lista no vacia. posicion a insertar menor a cont
-        nodo *recorre = raiz;
-        int cont2 = 0;
-        while (recorre->sig != NULL){
-            cont2++;
-            if (cont == n){
-                // still working
-            }
-            recorre = recorre->sig;
+    else
+    { // lista no vacia.
+        int cont = 1;
+        nodo *anterior = raiz;
+        nodo *siguiente = NULL;
+
+        while (anterior->sig != NULL && cont != n-1){
+            anterior = anterior->sig;
+            cont++;
         }
-        recorre->sig = nuevo;
+        siguiente = anterior->sig;
+        anterior->sig = nuevo;
+        nuevo->sig = siguiente;
     }
 }
 
@@ -111,7 +95,7 @@ int main(){
     insert('B');
     insert('A');
     insert('S');
-    insertN('X', 6);
+    insertN('X', 2);
 
     imprimeLista();
     return 0;
