@@ -11,6 +11,7 @@ int main(void)
     // input inicial. faltan valids
     printf("**ENTRADA**\n\n");
     printf("Razon de llegada Promedio: ");
+    // validacion razon llegada
     do{
         scanf("%i", &r_llegada);
         if (r_llegada > 0)
@@ -24,6 +25,7 @@ int main(void)
     }while (r_llegada <= 0);
 
     printf("Numero de cajeros: ");
+    // validacion numero cajeros
     do
     {
         scanf("%i", &n_cajeros);
@@ -37,11 +39,14 @@ int main(void)
         }
     } while (n_cajeros <= 0);
 
-
     // ciclo input razon de cada cajero
     for (int i = 0; i < n_cajeros; i++){
         printf("Razon de atencion del cajero %i: ", i+1);
         scanf("%i", &r_cajeros[i]);
     }
     system("cls");
+
+    // procesamiento de input
+    // se debe simular el horario completo de 34200 segundos
+    // osease de 8 am a 5:30 pm
 }
