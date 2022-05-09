@@ -56,6 +56,9 @@ int main(void)
     // osease de 8 am a 5:30 pm
     for (tiempo = 0; tiempo < 10; tiempo++){
         t_llegada = (rand() % r_llegada) + 1;
+        int suma = tiempo + t_llegada;
+
         tiempos_llegada = insert(tiempos_llegada, t_llegada);
     }
+    // imprimeLista(tiempos_llegada);
 }
