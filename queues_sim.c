@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-// #include <queues.h>
+#include "queues.h"
 
 int main(void)
 {
