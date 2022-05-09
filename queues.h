@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <malloc.h>		// Para el manejo de memoria dinámica
 
-struct Nodo 
-{  
+struct Nodo
+{
 	int info;
 	struct Nodo *sig;
 };
@@ -37,9 +37,9 @@ nodo *insert(nodo *raiz, int dato)
 nodo *remueve(nodo *raiz, int *dato)
 {
 	nodo *anterior = raiz;
-	if( raiz == NULL) 
+	if( raiz == NULL)
 	{
-		printf("La lista está vacía.");  //  _Underflow: 
+		printf("La lista está vacía.");  //  _Underflow:
 		return NULL;
 	}
 	*dato = anterior -> info;
@@ -52,7 +52,7 @@ void imprimeLista(nodo *raiz)
 {
 	nodo *recorre = raiz;
 	while( recorre  != NULL) {
-		printf("%c, ", recorre->info);
+		printf("%i, ", recorre->info);
 		recorre = recorre ->sig;
 	}
 	printf("\n");
