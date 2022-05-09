@@ -54,8 +54,8 @@ int main(void)
     // procesamiento de input
     // se debe simular el horario completo de 34200 segundos
     // osease de 8 am a 5:30 pm
-    for (tiempo = 0; tiempo < 34200; tiempo++){
-        t_llegada = rand() % r_llegada;
-        tiempos_llegada = insert(tiempos_llegada, )
+    for (tiempo = 0; tiempo < 10; tiempo++){
+        t_llegada = (rand() % r_llegada) + 1;
+        tiempos_llegada = insert(tiempos_llegada, t_llegada);
     }
 }
