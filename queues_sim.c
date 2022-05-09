@@ -58,7 +58,16 @@ int main(void)
         t_llegada = (rand() % r_llegada) + 1;
         int suma = tiempo + t_llegada;
 
-        tiempos_llegada = insert(tiempos_llegada, t_llegada);
+        if (tiempos_llegada == NULL){
+            // lista vacia
+            tiempos_llegada = insert(tiempos_llegada, suma);
+        }
+        else if (tiempos_llegada){
+            // dato en lista mayor que suma
+        }
+        else if{
+            // dato en lista menor que suma
+        }
     }
     // imprimeLista(tiempos_llegada);
 }
