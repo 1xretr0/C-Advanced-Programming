@@ -9,6 +9,8 @@ int main(void)
     // variables iniciales de entrada
     int r_llegada, n_cajeros, r_cajeros[8], n_cliente;
     int tiempo, t_llegada;
+    nodo *tiempos_llegada = NULL;
+
     srand(time(NULL));
 
     // input inicial. faltan valids
@@ -54,5 +56,6 @@ int main(void)
     // osease de 8 am a 5:30 pm
     for (tiempo = 0; tiempo < 34200; tiempo++){
         t_llegada = rand() % r_llegada;
+        tiempos_llegada = insert(tiempos_llegada, )
     }
 }

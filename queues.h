@@ -4,13 +4,13 @@
 
 struct Nodo 
 {  
-	char info;
+	int info;
 	struct Nodo *sig;
 };
 typedef struct Nodo nodo;
 
 
-nodo *insert(nodo *raiz, char dato)
+nodo *insert(nodo *raiz, int dato)
 {
 	nodo *nuevo = NULL;
 	nuevo = (nodo *) malloc( sizeof(nodo) );
@@ -34,7 +34,7 @@ nodo *insert(nodo *raiz, char dato)
 	return raiz;
 }
 
-nodo *remueve(nodo *raiz, char *dato)
+nodo *remueve(nodo *raiz, int *dato)
 {
 	nodo *anterior = raiz;
 	if( raiz == NULL) 
