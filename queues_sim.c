@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
 #include "queues.h"
 
 int main(void)
 {
     // variables iniciales de entrada
-    int r_llegada, n_cajeros, r_cajeros[8];
+    int r_llegada, n_cajeros, r_cajeros[8], n_cliente;
+    int tiempo, t_llegada;
+    srand(time(NULL));
 
     // input inicial. faltan valids
     printf("**ENTRADA**\n\n");
@@ -49,4 +52,7 @@ int main(void)
     // procesamiento de input
     // se debe simular el horario completo de 34200 segundos
     // osease de 8 am a 5:30 pm
+    for (tiempo = 0; tiempo < 34200; tiempo++){
+        t_llegada = rand() % 0 + r_llegada;
+    }
 }
