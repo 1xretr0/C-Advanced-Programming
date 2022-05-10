@@ -9,12 +9,12 @@ int main(void)
     struct Cajero {
         int razon_atencion;
         int ocupado;
-        int t_atencion;
+        int t_desocupa;
     }cajeros[8];
 
     // variables iniciales de entrada
     int r_llegada, n_cajeros, n_cliente, n_atencion, n_atendidos;
-    int tiempo, t_llegada;
+    int tiempo, t_llegada, t_atencion;
 
     // nodo *tiempos_llegada = NULL;
     nodo *queue = NULL;
@@ -77,7 +77,7 @@ int main(void)
     n_atendidos = 0;
     int dato;
 
-    for (tiempo = 0; tiempo < 60; tiempo++){
+    for (tiempo = 0; tiempo < 10; tiempo++){
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
         printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
@@ -99,24 +99,23 @@ int main(void)
                 if (cajeros[i].ocupado == 0){
                     queue = remueve(queue, &dato);
                     n_atendidos++;
-                    cajeros[i].t_atencion = tiempo + (rand() % cajeros[i].razon_atencion) + 1;
+                    t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
+                    cajeros[i].t_desocupa = tiempo + t_atencion;
                     cajeros[i].ocupado = 1; // se ocupa el cajero
-                    
+                    printf("Tiempo %i | t atender %i | desocupara %i\n", i, cajeros[i].t_desocupa);
+                    break;
+
                 }
-                else
-                {
-                    if (tiempo == cajeros[i].t_atencion)
-                    {
-                        cajeros[i].ocupado = 0; // se desocupa el cajero
-                    }
+                else if (tiempo == cajeros[i].t_desocupa){
+                    cajeros[i].ocupado = 0; // se desocupa el cajero
                 }
             }
         }
-
     }
 
     printf("Arreglo\n");
-    for (int i = 0; i < 120; i++){
+    for (int i = 0; i < 20; i++)
+    {
         printf("%i, ", tiempo_array[i]);
     }
     printf("\n");
