@@ -34,11 +34,47 @@ nodo *insert(nodo *raiz, int dato)
 	return raiz;
 }
 
+nodo *insertn(nodo *raiz, int dato, int pos){
+	nodo *nuevo = NULL;
+	nuevo = (nodo *)malloc(sizeof(nodo));
+	if (nuevo == NULL)
+	{
+		printf("No hay memoria suficiente! \n");
+		exit(1);
+	}
+	nuevo->info = dato;
+	nuevo->sig = NULL;
+
+	if (raiz == NULL){
+		raiz = nuevo;
+	}
+	if (pos == 1)
+	{
+		nodo *siguiente = raiz;
+		raiz = nuevo;
+		nuevo->sig = siguiente;
+	}
+	else
+	{
+		int cont = 1;
+		nodo *anterior = raiz;
+		nodo *siguiente = NULL;
+		while (anterior->sig != NULL && cont != pos - 1)
+		{
+			anterior = anterior->sig;
+			cont++;
+		}
+		siguiente = anterior->sig;
+		anterior->sig = nuevo;
+		nuevo->sig = siguiente;
+	}
+	return raiz;
+}
+
 nodo *remueve(nodo *raiz, int *dato)
 {
 	nodo *anterior = raiz;
-	if( raiz == NULL)
-	{
+	if( raiz == NULL){
 		printf("La lista está vacía.");  //  _Underflow:
 		return NULL;
 	}
