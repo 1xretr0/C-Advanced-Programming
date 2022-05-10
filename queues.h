@@ -34,7 +34,7 @@ nodo *insert(nodo *raiz, int dato)
 	return raiz;
 }
 
-nodo *insertn(nodo *raiz, int dato, int pos){
+nodo *insertN(nodo *raiz, int dato, int pos){
 	nodo *nuevo = NULL;
 	nuevo = (nodo *)malloc(sizeof(nodo));
 	if (nuevo == NULL)
@@ -85,6 +85,46 @@ nodo *remueve(nodo *raiz, int *dato)
 	return raiz;
 }
 
+// order functions
+nodo *insertOrdenado(nodo *raiz, int suma, int pos)
+{
+	nodo *nuevo = NULL;
+	nuevo = (nodo *) malloc(sizeof(nodo));
+	if (nuevo == NULL)
+	{
+		printf("No hay memoria suficiente! \n");
+		exit(1);
+	}
+	nuevo->info = suma;
+	nuevo->sig = NULL;
+
+	if (raiz == NULL)
+	{
+		raiz = nuevo;
+	}
+	if (pos == 1)
+	{
+		nodo *siguiente = raiz;
+		raiz = nuevo;
+		nuevo->sig = siguiente;
+	}
+	else
+	{
+		int cont = 1;
+		nodo *anterior = raiz;
+		nodo *siguiente = NULL;
+		while (anterior->sig != NULL && cont != pos - 1)
+		{
+			anterior = anterior->sig;
+			cont++;
+		}
+		siguiente = anterior->sig;
+		anterior->sig = nuevo;
+		nuevo->sig = siguiente;
+	}
+	return raiz;
+}
+
 // print function
 void imprimeLista(nodo *raiz)
 {
@@ -94,16 +134,4 @@ void imprimeLista(nodo *raiz)
 		recorre = recorre ->sig;
 	}
 	printf("\n");
-}
-
-// order functions
-void ordenaLista(nodo *raiz)
-{
-	nodo *recorre = raiz;
-	while (recorre != NULL)
-	{
-		printf("%i, ", recorre->info);
-		recorre = recorre->sig;
-	}
-
 }
