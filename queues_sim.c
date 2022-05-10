@@ -82,7 +82,7 @@ int main(void)
     int dato;
 
     // ciclo de tiempo principal
-    for (tiempo = 0; tiempo < 10; tiempo++){
+    for (tiempo = 0; tiempo < 20; tiempo++){
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
         printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
@@ -108,7 +108,7 @@ int main(void)
                     t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
                     cajeros[i].t_desocupa = tiempo + t_atencion;
                     cajeros[i].ocupado = 1; // se ocupa el cajero
-                    printf("Tiempo %i | t atender %i | desocupara %i\n", tiempo, cajeros[i].t_desocupa);
+                    printf("Tiempo %i | t atender %i | desocupara %i\n", tiempo, t_atencion, cajeros[i].t_desocupa);
                     break;
 
                 }
@@ -147,7 +147,6 @@ int main(void)
 
     printf("Se atendieron %i Clientes\n", n_atendidos);
    	cantidadLista(queue);
-
     printf("Cajeros ocupados: %i\n", cajeros[0].ocupado);
 
 
