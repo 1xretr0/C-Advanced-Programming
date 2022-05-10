@@ -7,9 +7,17 @@
 int main(void)
 {
     // variables iniciales de entrada
-    int r_llegada, n_cajeros, r_cajeros[8], n_cliente;
-    int tiempo, t_llegada;
-    nodo *tiempos_llegada = NULL;
+    int r_llegada, n_cajeros, cajeros[8][2], n_cliente;
+    int tiempo, t_llegada, n_atencion;
+
+    // nodo *tiempos_llegada = NULL;
+    nodo *queue = NULL;
+    int tiempo_array[34200];
+
+    // inicializacion arreglo a 0s
+    for (int i = 0; i < 34200; i++){
+        tiempo_array[i] = 0;
+    }
 
     srand(time(NULL));
 
@@ -47,39 +55,39 @@ int main(void)
     // ciclo input razon de cada cajero
     for (int i = 0; i < n_cajeros; i++){
         printf("Razon de atencion del cajero %i: ", i+1);
-        scanf("%i", &r_cajeros[i]);
+        scanf("%i", &cajeros[i][0]);
     }
     system("cls");
 
     // procesamiento de input
     // se debe simular el horario completo de 34200 segundos
     // osease de 8 am a 5:30 pm
+
+    // inicializamos el número de atención
+    n_atencion = 1;
+
     for (tiempo = 0; tiempo < 5; tiempo++){
+        // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
-        int suma = tiempo + t_llegada;
+        printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
+        // guarda la llegada en el segundo determinado
+        tiempo_array[tiempo + t_llegada] += 1;
 
-        if (tiempos_llegada == NULL){
-            // lista vacia
-            tiempos_llegada = insert(tiempos_llegada, suma);
-        }
-        else{
-            // lista no vacía
-            nodo *recorre = tiempos_llegada;
-            int contador = 1;
-            while (recorre != NULL)
-            {
-                if (suma <= recorre->info)
-                {
-                    recorre = insertN(recorre, suma, contador);
-                }
-
-                recorre = recorre->sig;
-                contador++;
+        // determinar si llega un cliente en este segundo
+        if (tiempo_array[tiempo]){
+            while (tiempo_array[tiempo] > 0){
+                queue = insert(queue, n_atencion);
+                n_atencion++;
+                tiempo_array[tiempo]--;
             }
-
         }
-        tiempos_llegada = insert(tiempos_llegada, suma);
     }
 
-    imprimeLista(tiempos_llegada);
+    printf("Arreglo\n");
+    for (int i = 0; i < 20; i++){
+        printf("%i, ", tiempo_array[i]);
+    }
+    printf("\n\n");
+
+    imprimeLista(queue);
 }
