@@ -121,4 +121,16 @@ int main(void)
     printf("\n");
 
     imprimeLista(queue);
+
+    printf("\n");
+    printf("Inicio de Actividades: 8:00\n");
+    printf("Fin de Actividades: 5:30\n");
+
+    printf("Se atendieron %i Clientes\n", n_atendidos);
+    
+   	cantidadLista(queue);
+   	
+    printf("El Cliente permanece en Promedio  %f segundos en la cola\n");
+    printf("La cola estuvo vacía %i veces\n");
+
 }
