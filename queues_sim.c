@@ -9,11 +9,12 @@ int main(void)
     struct Cajero {
         int razon_atencion;
         int ocupado;
+        int t_atencion;
     }cajeros[8];
 
     // variables iniciales de entrada
-    int r_llegada, n_cajeros, n_cliente;
-    int tiempo, t_llegada, n_atencion;
+    int r_llegada, n_cajeros, n_cliente, n_atencion, n_atendidos;
+    int tiempo, t_llegada;
 
     // nodo *tiempos_llegada = NULL;
     nodo *queue = NULL;
@@ -32,15 +33,14 @@ int main(void)
     // validacion razon llegada
     do{
         scanf("%i", &r_llegada);
-        if (r_llegada > 0)
-        {
+        if (r_llegada > 0) {
             break;
         }
         else
         {
             printf("Ingrese una razon valida: ");
         }
-    }while (r_llegada <= 0);
+    } while (r_llegada <= 0);
 
     printf("Numero de cajeros: ");
     // validacion numero cajeros
@@ -62,16 +62,22 @@ int main(void)
         printf("Razon de atencion del cajero %i: ", i+1);
         scanf("%i", &cajeros[i].razon_atencion);
     }
+    // inicializacion cajeros a desocupados
+    for (int i = 0; i < n_cajeros; i++){
+        cajeros[i].ocupado = 0;
+    }
     system("cls");
 
     // procesamiento de input
     // se debe simular el horario completo de 34200 segundos
     // osease de 8 am a 5:30 pm
 
-    // inicializamos el número de atención
+    // inicializamos variables para ciclo
     n_atencion = 1;
+    n_atendidos = 0;
+    int dato;
 
-    for (tiempo = 0; tiempo < 5; tiempo++){
+    for (tiempo = 0; tiempo < 60; tiempo++){
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
         printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
@@ -87,19 +93,26 @@ int main(void)
             }
         }
 
-        // determinar si hay cajeros disponibles
-        for (int i = 0; i < n_cajeros; i++){
-            if (cajeros[i].ocupado == 0){
-                // TODO
+        // determinar si hay cajeros disponibles y hay gente en la queue
+        if (queue != NULL){
+            for (int i = 0; i < n_cajeros; i++){
+                if (cajeros[i].ocupado == 0){
+                    queue = remueve(queue, &dato);
+                    n_atendidos++;
+                    cajeros[i].t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
+                    cajeros[i].ocupado = 1; // se ocupa el cajero
+                    break;
+                }
             }
         }
+
     }
 
     printf("Arreglo\n");
-    for (int i = 0; i < 20; i++){
+    for (int i = 0; i < 120; i++){
         printf("%i, ", tiempo_array[i]);
     }
-    printf("\n\n");
+    printf("\n");
 
     imprimeLista(queue);
 }
