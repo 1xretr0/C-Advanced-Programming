@@ -8,7 +8,7 @@ struct Nodo
 	struct Nodo *sig;
 };
 typedef struct Nodo nodo;
-int c_queue=0;
+int cont_queue = 0;
 
 // insert functions
 nodo *insert(nodo *raiz, int dato)
@@ -111,5 +111,5 @@ void cantidadLista(nodo *raiz)
 		c_queue++;
 		recorre = recorre ->sig;
 	}
-	printf("Quedaron %i Clientes en la cola de espera\n", c_queue);
+	printf("Quedaron %i Clientes en la cola de espera\n", cont_queue);
 }
