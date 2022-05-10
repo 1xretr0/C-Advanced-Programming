@@ -9,7 +9,7 @@ struct Nodo
 };
 typedef struct Nodo nodo;
 
-
+// insert functions
 nodo *insert(nodo *raiz, int dato)
 {
 	nodo *nuevo = NULL;
@@ -71,6 +71,7 @@ nodo *insertn(nodo *raiz, int dato, int pos){
 	return raiz;
 }
 
+// remueve functions
 nodo *remueve(nodo *raiz, int *dato)
 {
 	nodo *anterior = raiz;
@@ -84,6 +85,7 @@ nodo *remueve(nodo *raiz, int *dato)
 	return raiz;
 }
 
+// print function
 void imprimeLista(nodo *raiz)
 {
 	nodo *recorre = raiz;
@@ -92,4 +94,16 @@ void imprimeLista(nodo *raiz)
 		recorre = recorre ->sig;
 	}
 	printf("\n");
+}
+
+// order functions
+void ordenaLista(nodo *raiz)
+{
+	nodo *recorre = raiz;
+	while (recorre != NULL)
+	{
+		printf("%i, ", recorre->info);
+		recorre = recorre->sig;
+	}
+
 }
