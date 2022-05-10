@@ -108,7 +108,7 @@ void cantidadLista(nodo *raiz)
 {
 	nodo *recorre = raiz;
 	while( recorre  != NULL) {
-		c_queue++;
+		cont_queue++;
 		recorre = recorre ->sig;
 	}
 	printf("Quedaron %i Clientes en la cola de espera\n", cont_queue);
