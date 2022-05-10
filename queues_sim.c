@@ -6,8 +6,13 @@
 
 int main(void)
 {
+    struct Cajero {
+        int razon_atencion;
+        int ocupado;
+    }cajeros[8];
+
     // variables iniciales de entrada
-    int r_llegada, n_cajeros, cajeros[8][2], n_cliente;
+    int r_llegada, n_cajeros, n_cliente;
     int tiempo, t_llegada, n_atencion;
 
     // nodo *tiempos_llegada = NULL;
@@ -55,7 +60,7 @@ int main(void)
     // ciclo input razon de cada cajero
     for (int i = 0; i < n_cajeros; i++){
         printf("Razon de atencion del cajero %i: ", i+1);
-        scanf("%i", &cajeros[i][0]);
+        scanf("%i", &cajeros[i].razon_atencion);
     }
     system("cls");
 
@@ -79,6 +84,13 @@ int main(void)
                 queue = insert(queue, n_atencion);
                 n_atencion++;
                 tiempo_array[tiempo]--;
+            }
+        }
+
+        // determinar si hay cajeros disponibles
+        for (int i = 0; i < n_cajeros; i++){
+            if (cajeros[i].ocupado == 0){
+                // TODO
             }
         }
     }
