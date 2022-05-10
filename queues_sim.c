@@ -14,7 +14,7 @@ int main(void)
 
     // variables iniciales de entrada
     int r_llegada, n_cajeros, n_cliente, n_atencion, n_atendidos;
-    int tiempo, t_llegada, t_atencion;
+    int tiempo, t_llegada, t_atencion, t_cola;
 
     // nodo *tiempos_llegada = NULL;
     nodo *queue = NULL;
@@ -79,6 +79,7 @@ int main(void)
     // inicializamos variables para ciclo
     n_atencion = 1;
     n_atendidos = 0;
+    t_cola = t_atencion = 0;
     int dato;
 
     // ciclo de tiempo principal
@@ -147,7 +148,7 @@ int main(void)
 
     printf("Se atendieron %i Clientes\n", n_atendidos);
    	cantidadLista(queue);
-    printf("Cajeros ocupados: %i\n", cajeros[0].ocupado);
+    // printf("Cajeros ocupados: %i\n", cajeros[0].ocupado);
 
 
     // printf("El Cliente permanece en Promedio  %f segundos en la cola\n");
