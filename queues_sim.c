@@ -54,7 +54,7 @@ int main(void)
     // procesamiento de input
     // se debe simular el horario completo de 34200 segundos
     // osease de 8 am a 5:30 pm
-    for (tiempo = 0; tiempo < 10; tiempo++){
+    for (tiempo = 0; tiempo < 5; tiempo++){
         t_llegada = (rand() % r_llegada) + 1;
         int suma = tiempo + t_llegada;
 
@@ -62,12 +62,24 @@ int main(void)
             // lista vacia
             tiempos_llegada = insert(tiempos_llegada, suma);
         }
-        else if (tiempos_llegada){
-            // dato en lista mayor que suma
+        else{
+            // lista no vacía
+            nodo *recorre = tiempos_llegada;
+            int contador = 1;
+            while (recorre != NULL)
+            {
+                if (suma <= recorre->info)
+                {
+                    recorre = insertN(recorre, suma, contador);
+                }
+
+                recorre = recorre->sig;
+                contador++;
+            }
+
         }
-        else if{
-            // dato en lista menor que suma
-        }
+        tiempos_llegada = insert(tiempos_llegada, suma);
     }
-    // imprimeLista(tiempos_llegada);
+
+    imprimeLista(tiempos_llegada);
 }
