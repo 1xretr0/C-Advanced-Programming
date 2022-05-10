@@ -99,9 +99,16 @@ int main(void)
                 if (cajeros[i].ocupado == 0){
                     queue = remueve(queue, &dato);
                     n_atendidos++;
-                    cajeros[i].t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
+                    cajeros[i].t_atencion = tiempo + (rand() % cajeros[i].razon_atencion) + 1;
                     cajeros[i].ocupado = 1; // se ocupa el cajero
-                    break;
+                    
+                }
+                else
+                {
+                    if (tiempo == cajeros[i].t_atencion)
+                    {
+                        cajeros[i].ocupado = 0; // se desocupa el cajero
+                    }
                 }
             }
         }
