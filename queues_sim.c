@@ -19,7 +19,8 @@ int main(void)
 
     // nodo *tiempos_llegada = NULL;
     nodo *queue = NULL;
-    int tiempo_array[34200], tiempo_array_test[30];
+    char tiempo_array[34200];
+    int tiempo_array_test[30];
 
     // inicializacion arreglo a 0s
     for (int i = 0; i < 34200; i++){
@@ -78,7 +79,7 @@ int main(void)
     // osease de 8 am a 5:30 pm
 
     // inicializamos variables para ciclo
-    t_total = 34200;
+    t_total = 32400;
     n_atencion = 1;
     n_atendidos = 0;
     t_cola = t_atencion = 0;
@@ -114,23 +115,22 @@ int main(void)
                 else
                 {
                     c_cola++;
+                    continue;
                 }
             }
             else if (tiempo == cajeros[i].t_desocupa)
             {
                 cajeros[i].ocupado = 0; // se desocupa el cajero
+                continue;
             }
             break;
         }
 
         // determinar si llega un cliente en este segundo
         if (tiempo_array[tiempo] != 0){
-            while (tiempo_array[tiempo] > 0){
-                queue = insert(queue, n_atencion);
-                t_cola++;
-                n_atencion++;
-                tiempo_array[tiempo] -= 1;
-            }
+            queue = insert(queue, n_atencion);
+            t_cola++;
+            n_atencion++;
         }
 
         if (t_cola >= 1)
