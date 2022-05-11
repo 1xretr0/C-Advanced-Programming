@@ -32,7 +32,7 @@ int main(void)
 
     srand(time(0));
 
-    // input inicial. faltan valids
+    // input inicial.
     printf("**ENTRADA**\n\n");
     printf("Razon de llegada Promedio: ");
     // validacion razon llegada
@@ -52,7 +52,7 @@ int main(void)
     do
     {
         scanf("%i", &n_cajeros);
-        if (n_cajeros > 0)
+        if (n_cajeros > 0 && n_cajeros <= 8 )
         {
             break;
         }
@@ -60,7 +60,7 @@ int main(void)
         {
             printf("Ingrese un numero valido: ");
         }
-    } while (n_cajeros <= 0);
+    } while (n_cajeros <= 0 || n_cajeros > 8);
 
     // ciclo input razon de cada cajero
     for (int i = 0; i < n_cajeros; i++){
@@ -151,6 +151,8 @@ int main(void)
     //imprimeLista(queue);
 
     printf("\n");
+
+    //Output final
     printf("Inicio de Actividades: 8:00\n");
     printf("Fin de Actividades: 5:30\n\n");
 
