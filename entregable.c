@@ -80,7 +80,7 @@ int main(void)
     // osease de 8 am a 5:30 pm
 
     // inicializamos variables para ciclo
-    t_total = 32400;
+    t_total = 34200;
     n_atencion = 1;
     n_atendidos = 0;
     t_cola = t_atencion = 0;
@@ -88,11 +88,15 @@ int main(void)
     int dato;
 
     // ciclo de tiempo principal
-    for (tiempo = 0; tiempo < t_total; tiempo++){
+    for (tiempo = 0; tiempo < t_total; tiempo++)
+    {
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
-        // guarda la llegada en el segundo determinado
-        tiempo_array[tiempo + t_llegada] += 1;
+        if ((t_llegada + tiempo) < 34200)
+        {
+            // guarda la llegada en el segundo determinado
+            tiempo_array[tiempo + t_llegada] += 1;
+        }
 
         // determinar si hay cajeros disponibles y hay gente en la queue
         for (int i = 0; i < n_cajeros; i++) // checa disponibilidad cajeros
