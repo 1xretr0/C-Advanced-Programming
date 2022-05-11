@@ -14,7 +14,8 @@ int main(void)
 
     // variables iniciales de entrada
     int r_llegada, n_cajeros, n_cliente, n_atencion, n_atendidos;
-    int tiempo, t_llegada, t_atencion, t_cola;
+    int tiempo, t_llegada, t_atencion, t_cola, t_suma;
+	int c_cola;
 
     // nodo *tiempos_llegada = NULL;
     nodo *queue = NULL;
@@ -80,10 +81,11 @@ int main(void)
     n_atencion = 1;
     n_atendidos = 0;
     t_cola = t_atencion = 0;
+    c_cola=0;
     int dato;
 
     // ciclo de tiempo principal
-    for (tiempo = 0; tiempo < 20; tiempo++){
+    for (tiempo = 0; tiempo < 32400; tiempo++){
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
         printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
@@ -95,6 +97,7 @@ int main(void)
         if (tiempo_array[tiempo]){
             while (tiempo_array[tiempo] > 0){
                 queue = insert(queue, n_atencion);
+            	t_cola++;
                 n_atencion++;
                 tiempo_array[tiempo]--;
             }
@@ -105,6 +108,8 @@ int main(void)
             for (int i = 0; i < n_cajeros; i++){
                 if (cajeros[i].ocupado == 0){
                     queue = remueve(queue, &dato);
+                    t_suma+=t_cola;
+                    t_cola=0;
                     n_atendidos++;
                     t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
                     cajeros[i].t_desocupa = tiempo + t_atencion;
@@ -118,8 +123,10 @@ int main(void)
                 }
             }
         }
+        else{
+        	c_cola++;
+		}
     }
-
     printf("\n");
     for (int i = 0; i < 30; i++)
     {
@@ -139,8 +146,9 @@ int main(void)
     }
     printf("\n\n");
 
-    printf("Queue:\n");
-    imprimeLista(queue);
+	float t_promedio= t_suma / (float)n_atendidos;
+    //printf("Queue:\n");
+    //imprimeLista(queue);
 
     printf("\n");
     printf("Inicio de Actividades: 8:00\n");
@@ -149,9 +157,9 @@ int main(void)
     printf("Se atendieron %i Clientes\n", n_atendidos);
    	cantidadLista(queue);
     // printf("Cajeros ocupados: %i\n", cajeros[0].ocupado);
-
-
-    // printf("El Cliente permanece en Promedio  %f segundos en la cola\n");
-    // printf("La cola estuvo vacia %i veces\n");
+	//printf("Tiempo Total de personas en la cola: %i \n", t_suma);
+	//printf("Personas en la cola que esperaron: %i \n", n_atendidos);
+	printf("El Cliente permanece en Promedio  %.3f segundos en la cola\n", t_promedio);
+    printf("La cola estuvo vacia %i veces\n", c_cola);
 
 }
