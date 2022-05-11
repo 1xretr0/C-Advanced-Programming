@@ -26,9 +26,9 @@ int main(void)
         tiempo_array[i] = 0;
     }
 
-    for (int i = 0; i < 20; i++){
-        tiempo_array_test[i] = 0;
-    }
+    // for (int i = 0; i < 20; i++){
+    //     tiempo_array_test[i] = 0;
+    // }
 
     srand(time(0));
 
@@ -85,10 +85,10 @@ int main(void)
     int dato;
 
     // ciclo de tiempo principal
-    for (tiempo = 0; tiempo < 32400; tiempo++){
+    for (tiempo = 0; tiempo < 34000; tiempo++){
         // numero aleatorio de tiempo llegada
         t_llegada = (rand() % r_llegada) + 1;
-        printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
+        // printf("Segundo %i | t llegada: %i | Posicion: %i\n", tiempo, t_llegada, tiempo+t_llegada);
         // guarda la llegada en el segundo determinado
         tiempo_array[tiempo + t_llegada] += 1;
         tiempo_array_test[tiempo + t_llegada] += 1;
@@ -103,18 +103,22 @@ int main(void)
             }
         }
 
+        if (t_cola >= 1){
+            t_cola++;
+        }
+
         // determinar si hay cajeros disponibles y hay gente en la queue
         if (queue != NULL){
             for (int i = 0; i < n_cajeros; i++){
                 if (cajeros[i].ocupado == 0){
                     queue = remueve(queue, &dato);
-                    t_suma+=t_cola;
-                    t_cola=0;
+                    t_suma += t_cola;
+                    t_cola = 0;
                     n_atendidos++;
                     t_atencion = (rand() % cajeros[i].razon_atencion) + 1;
                     cajeros[i].t_desocupa = tiempo + t_atencion;
                     cajeros[i].ocupado = 1; // se ocupa el cajero
-                    printf("Tiempo %i | t atender %i | desocupara %i\n", tiempo, t_atencion, cajeros[i].t_desocupa);
+                    // printf("Tiempo %i | t atender %i | desocupara %i\n", tiempo, t_atencion, cajeros[i].t_desocupa);
                     break;
 
                 }
@@ -126,27 +130,28 @@ int main(void)
         else{
         	c_cola++;
 		}
-    }
-    printf("\n");
-    for (int i = 0; i < 30; i++)
-    {
-        printf("%i, ", i);
-    }
-    printf("\n");
-    printf("\nArreglo Tiempo test\n");
-    for (int i = 0; i < 30; i++)
-    {
-        printf("%i, ", tiempo_array_test[i]);
-    }
-    printf("\n");
-    printf("Arreglo Tiempo real\n");
-    for (int i = 0; i < 30; i++)
-    {
-        printf("%i, ", tiempo_array[i]);
-    }
-    printf("\n\n");
 
-	float t_promedio= t_suma / (float)n_atendidos;
+    }
+    printf("\n");
+    // for (int i = 0; i < 30; i++)
+    // {
+    //     printf("%i, ", i);
+    // }
+    // printf("\n");
+    // printf("\nArreglo Tiempo test\n");
+    // for (int i = 0; i < 30; i++)
+    // {
+    //     printf("%i, ", tiempo_array_test[i]);
+    // }
+    // printf("\n");
+    // printf("Arreglo Tiempo real\n");
+    // for (int i = 0; i < 30; i++)
+    // {
+    //     printf("%i, ", tiempo_array[i]);
+    // }
+    // printf("\n\n");
+
+	float t_promedio = t_suma / (float)n_atendidos;
     //printf("Queue:\n");
     //imprimeLista(queue);
 
@@ -158,10 +163,8 @@ int main(void)
 
     printf("Se atendieron %i Clientes\n", n_atendidos);
    	cantidadLista(queue);
-    // printf("Cajeros ocupados: %i\n", cajeros[0].ocupado);
 	//printf("Tiempo Total de personas en la cola: %i \n", t_suma);
 	//printf("Personas en la cola que esperaron: %i \n", n_atendidos);
 	printf("El Cliente permanece en Promedio  %.3f segundos en la cola\n", t_promedio);
     printf("La cola estuvo vacia %i veces\n", c_cola);
-
 }
